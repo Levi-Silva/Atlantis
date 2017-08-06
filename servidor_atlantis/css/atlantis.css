@@ -1,0 +1,54 @@
+header {
+	font-family: 'Comfortaa', cursive;
+}
+
+nav {
+	font-family: 'Comfortaa', cursive;
+}
+
+div.col-md-6 {
+	border-collapse: collapse;
+  z-index: -1;
+	position: relative;
+	text-align: center;
+}
+
+div.col-md-6.login {
+	border-left: 1px solid gray;
+}
+
+
+div.landing {
+	text-align: center;
+}
+
+body {
+	background: url(../img/womancity.jpeg) no-repeat center center fixed ;
+	-webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+div.landing h1 {
+	font-family: 'Comfortaa', cursive;
+	margin-top: 45px;
+}
+
+div.landing h2 {
+	font-family: 'Comfortaa', cursive;
+}
+
+.fa.fa-wifi {
+	font-size: 1em;
+}
+
+img.logoAtlantis {
+	max-width: 100%;
+	height: 70px;
+	z-index: -99;
+}
+
+a.btn {
+	margin-top: 10px;
+}

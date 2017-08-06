@@ -1,0 +1,85 @@
+header {
+	font-family: 'Comfortaa', cursive;
+}
+
+nav {
+	font-family: 'Comfortaa', cursive;
+}
+
+div.container.gauge {
+	display: flex;
+	padding-left: 110px;
+}
+
+div.temperatura {
+	margin-top: 15%;
+}
+
+.sinal {
+	float: left;
+	/*padding-left: 40px;*/
+	margin-top: 20px;
+}
+
+.ok {
+	background-color:#044C29;
+	width: 100px;
+	margin-left: 120px;
+}
+
+div ul.ok li {
+	list-style-type: none;
+	color: white;
+}
+
+.alerta {
+	background-color:#FAB400;
+	width: 100px;
+	padding-left: 30px;
+}
+
+div ul.alerta li {
+	list-style-type: none;
+	color: white;
+	width: 100%;
+}
+
+.perigo {
+	background-color:#E02A24;
+	width: 100px;
+	padding-left: 30px;
+}
+
+div ul.perigo li {
+	list-style-type: none;
+	color: white;
+	width: 100%;
+}
+
+h3.volumeCalha {
+	font-family: 'Comfortaa', cursive;
+	text-align: center;
+	font-size: 20px;
+}
+
+h3.graficoPrevisao {
+	font-family: 'Comfortaa', cursive;
+	text-align: center;
+	font-size: 20px;
+}
+
+h3.alagamentoGraf {
+	font-family: 'Comfortaa', cursive;
+	text-align: center;
+	font-size: 20px;
+}
+
+.alagamento {
+	padding-left: 50px;
+}
+
+h3.vento {
+	font-family: 'Comfortaa', cursive;
+	text-align: center;
+	font-size: 20px;
+}

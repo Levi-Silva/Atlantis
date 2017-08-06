@@ -1,0 +1,123 @@
+<% include partials/headerGrafico %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="col-sm-12 col-md-6 percentualVolumeCalha">
+        <h3 class="volumeCalha">% volume calha d'água</h3>
+        <div class="col-xm-1 sinal">
+          <ul class="ok">
+            <li><strong>Ok</strong></li>
+          </ul>
+        </div>
+        <div class="col-xm-1 sinal">
+          <ul class="alerta">
+            <li><strong>Alerta</strong></li>
+          </ul>
+        </div>
+        <div class="col-xm-1 sinal">
+          <ul class="perigo">
+            <li><strong>Perigo</strong></li>
+          </ul>
+        </div>
+        <div class="container gauge">
+          <svg id="fillgauge3"  height="500px"></svg>
+        </div>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <h3 class="graficoPrevisao">% previsão de temperatura</h3>
+        <div class="temperatura" id='myChart-temperatura' ng-controller="GraficoController">
+        <style>
+        #myChart-temperatura {
+          width:100%;
+          height:100%;
+        }
+        .zc-ref {
+          display: none;
+        }
+        </style>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-12">
+    <div class="col-sm-12 col-md-6">
+      <h3 class="alagamentoGraf">% alagamento na cidade de São Paulo</h3>
+      <div id='myChart-alagamento' class="alagamento">
+      <style>
+      html, body, #myChart-alagamento {
+        width:100%;
+        height:100%;
+      }
+      .zc-ref {
+        display: none;
+      }
+      </style>
+    </div>
+  </div>
+  <div class="col-sm-12 col-md-6">
+    <h3 class="vento">Velocidade do vento (Km/h)</h3>
+    <div id='myChart-vento'>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+
+<script language="JavaScript">
+    var config2 = liquidFillGaugeDefaultSettings();
+    config2.circleColor = "#363434";
+    config2.textColor = "#727374";
+    config2.waveTextColor = "#969279";
+    config2.waveColor = "#C7C7BE";
+    config2.circleThickness = 0.1;
+    config2.circleFillGap = 0.2;
+    config2.textVertPosition = 0.8;
+    config2.waveAnimateTime = 2000;
+    config2.waveHeight = 0.3;
+    config2.waveCount = 1;
+
+    var gauge3 = loadLiquidFillGauge("fillgauge3", 60.1, config2);
+
+    function NewValue(){
+        if(Math.random() > .5){
+            return Math.round(Math.random()*100);
+        } else {
+            return (Math.random()*100).toFixed(1);
+        }
+    }
+
+      var socket = io.connect('http://45.55.170.244:3000');
+      //var socket = io.connect('http://localhost:3000');
+      socket.on('medida', function (data) {
+        console.log(data);
+        var maxCm = 30;
+        var maxPercentual = 100;
+        var cmReal = (maxCm - data.medida) * (maxPercentual/maxCm);
+
+        if(cmReal >= 0 && cmReal <= 29.9 ) {
+          config2.waveColor = "#45BF55";
+          config2.circleColor = "#044C29";
+          config2.textColor = "#167F39";
+          config2.waveTextColor = "#97ED8A";
+        }  else if(cmReal >= 30 && cmReal <= 50 ) {
+          config2.waveColor = "#FEE039";
+          config2.circleColor = "#FAB400";
+          config2.textColor = "#FFF000";
+          config2.waveTextColor = "#FFEB79";
+        } else {
+          config2.waveColor = "#EA423F";
+          config2.circleColor = "#E02A24";
+          config2.textColor = "#891A1C";
+          config2.waveTextColor = "#C06466";
+        }
+        gauge3.update(cmReal, config2);
+      });
+
+</script>
+
+
+
+<% include partials/footer %>

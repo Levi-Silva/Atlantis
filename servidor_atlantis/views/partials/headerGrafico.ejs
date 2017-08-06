@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Atlantis</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="content-type" content="text-html; charset=utf-8"/>
+  <link rel="stylesheet" type="text/css" href="../../css/grafico.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
+  <script type="text/javascript" src="../../js/paper.js"></script>
+
+    <script src="http://d3js.org/d3.v3.min.js" language="JavaScript"></script>
+    <script src="../../js/liquidFillGauge.js" language="JavaScript"></script>
+    <script src= "https://cdn.zingchart.com/zingchart.min.js"></script>
+    <script> zingchart.MODULESDIR = "https://cdn.zingchart.com/modules/";
+    ZC.LICENSE = ["569d52cefae586f634c54f86dc99e6a9","ee6b7db5b51705a13dc2339db3edaf6d"];</script>
+    <style>
+        .liquidFillGaugeText { font-family: Helvetica; font-weight: bold; }
+    </style>
+
+</head>
+
+<body ng-app="grafico">
+  <nav class="navbar navbar-default">
+
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/"><strong>Atlantis</strong> <i class="fa fa-wifi" aria-hidden="true"></i></a>
+      </div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-left">
+          <li class="sobre"><a href="/sobre">Sobre</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-left">
+          <li class="agradecimento"><a href="/agradecimento">Agradecimentos</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <% if(!currentUser){ %>
+            <li><a href="/login">Login <i class="fa fa-sign-in" aria-hidden="true"></i></a></li>
+            <li><a href="/register">Registre-se <i class="fa fa-user-plus" aria-hidden="true"></i></a></li>
+            <% } else { %>
+              <li><a href="#"><strong>Logado como:</strong> <%= currentUser.username %></a></li>
+              <li><a href="/logout">Logout <i class="fa fa-sign-out" aria-hidden="true"></i></a></li>
+              <% } %>
+            </ul>
+          </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+      </nav>
